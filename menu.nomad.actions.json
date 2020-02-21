@@ -1,0 +1,195 @@
+{
+    "title": "menu.nomad.actions",
+    "description": "Preference Domain: menu.nomad.actions,  Application: NoMAD",
+    "__version": "1.2.0",
+    "__feedback": "mitchelsblake@gmail.com",
+    "type": "object",
+    "options": {
+        "remove_empty_properties": true
+    },
+    "definitions": {
+        "CommandObject": {
+            "Command": {
+                "type": "string",
+                "enum": ["path", "app", "url", "ping", "adgroup", "alert", "notify", "false", "true"],
+                "enum_titles": [
+                    "Excute a binary at a specific file path",
+                    "Launch an app at a specific file path",
+                    "Launch a URL in the user's default browser",
+                    "Ping a host, will return false if the host is unpingable",
+                    "Determine if the current user is a member of an AD group",
+                    "Display a modal dialog to the user",
+                    "Display a notification in the notification center",
+                    "A command that always returns false",
+                    "A command that always returns true"
+                ]
+            },
+            "CommandOptions": {
+                "type": "string"
+            }
+        }
+    },
+    "properties": {
+        "Version": {
+            "description": "This is the version number of the file format. Currently, the only version is 1.",
+            "propertyOrder": 10,
+            "type": "integer",
+            "enum": [1],
+            "default": 1
+        },
+        "MenuIcon": {
+            "description": "Determines if the Actions menu itself will have a red/yellow/green light next to it.",
+            "anyOf": [
+                {
+                    "title": "Not Configured",
+                    "type": "null"
+                },
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "MenuText": {
+            "description": "Determines if the text of the main Action menu be the result of a command.",
+            "anyOf": [
+                {
+                    "title": "Not Configured",
+                    "type": "null"
+                },
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "Actions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Plaintext name of the Action. Will be used for the menu name if a Title isn't given.",
+                        "type": "string"
+                    },
+                    "Title": {
+                        "description": "Command Set that determines the name of the menu item.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "object",
+                                "properties": {
+                                    "$ref": "#/definitions/CommandObject"
+                                }
+                            }
+                        ]
+                    },
+                    "Show": {
+                        "description": "Command Set that determine if the item should be shown in the menu.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/CommandObject"
+                                }
+                            }
+                        ]
+                    },
+                    "Action": {
+                        "description": "Command Set that make up the actual Action itself.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/CommandObject"
+                                }
+                            }
+                        ]
+                    },
+                    "Post": {
+                        "description": "Command Set that will happen after the Action commands are run.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/CommandObject"
+                                }
+                            }
+                        ]
+                    },
+                    "GUID": {
+                        "description": "Unique ID for the Action.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "Connected": {
+                        "description": "If the action set should only be run when connected to the AD domain.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "boolean"
+                            }
+                        ]
+                    },
+                    "Timer": {
+                        "description": "Length in minutes between firing the Action.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "integer"
+                            }
+                        ]
+                    },
+                    "ToolTip": {
+                        "description": "The text to be shown when hovering over the menu item.",
+                        "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
