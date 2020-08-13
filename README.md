@@ -6,6 +6,9 @@ Collection of Schemas for the new Application & Custom Settings within Jamf Pro.
 
 ### NoMAD
 
+**com.apple.applicationaccess.json**
+A partial preference file that allows you to configure Apple Software Update deferrals. 
+
 **com.trusourcelabs.NoMAD.json**  
 The main preference file for NoMAD.
 
