@@ -123,8 +123,6 @@
                     "type": "string"
                 }
             ],
-            "enum": ["Kerberos", "Task", "URL", "App", "None"],
-            "default": "Kerberos",
             "options": {
                 "infoText": "Key: ChangePasswordOptions"
             },
@@ -147,6 +145,8 @@
                     "type": "string"
                 }
             ],
+            "enum": ["Kerberos", "Task", "URL", "App", "None"],
+            "default": "Kerberos",
             "options": {
                 "infoText": "Key: ChangePasswordType"
             },
