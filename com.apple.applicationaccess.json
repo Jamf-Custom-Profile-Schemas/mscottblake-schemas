@@ -12,23 +12,142 @@
             "title": "Defer Apple Software Updates",
             "description": " Supervised only. If set to true, delays user visibility of Software Updates. On macOS, seed build updates will be allowed, without delay",
             "propertyOrder": 10,
-            "type": "boolean",
-            "default": false,
-            "options": {
-                "infoText": "Key: forceDelayedSoftwareUpdates"
-            }
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "boolean",
+                                "default": false,
+                                "options": {
+                                    "infoText": "Key: forceDelayedSoftwareUpdates"
+                                }
+                            }
+            ]
         },
         "enforcedSoftwareUpdateDelay": {
-            "title": "Deferral length (in days)",
+            "title": " Software Update Deferral length (in days)",
             "description": "Supervised only. This restriction allows the admin to set how many days a software update on the device will be delayed. With this restriction in place, the user will not see a software update until the specified number of days after the software update release date.",
             "propertyOrder": 20,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 90,
-            "default": 30,
-            "options": {
-                "infoText": "Key: enforcedSoftwareUpdateDelay"
-            }
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 90,
+                                "default": 30,
+                                "options": {
+                                    "infoText": "Key: enforcedSoftwareUpdateDelay"
+                                }
+                            }
+            ]
+        },
+        "forceDelayedAppSoftwareUpdates": {
+            "title": "Defer Non-OS Software Updates",
+            "description": " Supervised only - macOS 11 or later. If true, delays user visibility of non-OS Software Updates. Visibility of Operating System updates is controlled through forceDelayedSoftwareUpdates. The delay is 30 days unless enforcedSoftwareUpdateDelay is set to another value.",
+            "propertyOrder": 30,
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "boolean",
+                                "default": false,
+                                "options": {
+                                    "infoText": "Key: forceDelayedAppSoftwareUpdates"
+                                }
+                            }
+            ]
+        },
+        "enforcedSoftwareUpdateNonOSDeferredInstallDelay": {
+            "title": "Non OS Update Deferral length (in days)",
+            "description": "Supervised only. macOS 11.3 and later. This restriction allows the admin to set how many days to delay an app software update on the device. When this restriction is in place the user sees a non-OS software update only after the specified delay after the release of the software. This value controls the delay for forceDelayedAppSoftwareUpdates.",
+            "propertyOrder": 40,
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 90,
+                                "default": 30,
+                                "options": {
+                                    "infoText": "Key: enforcedSoftwareUpdateNonOSDeferredInstallDelay"
+                                }
+                            }
+            ]
+        },
+        "enforcedSoftwareUpdateMinorOSDeferredInstallDelay": {
+            "title": "Minor OS Update Deferral length (in days)",
+            "description": "Supervised only. macOS 11.3 and later. This restriction allows the admin to set how many days to delay a minor OS software update on the device. When this restriction is in place the user see a software update only after the specified delay after the release of the software update. This value controls the delay for forceDelayedSoftwareUpdates.",
+            "propertyOrder": 50,
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 90,
+                                "default": 30,
+                                "options": {
+                                    "infoText": "Key: enforcedSoftwareUpdateMinorOSDeferredInstallDelay"
+                                }
+                            }
+            ]
+        },
+        "forceDelayedMajorSoftwareUpdates": {
+            "title": "Defer Major Software Updates",
+            "description": "If set to true, delays user visibility of major OS Software Updates.",
+            "propertyOrder": 60,
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "boolean",
+                                "default": false,
+                                "options": {
+                                    "infoText": "Key: forceDelayedMajorSoftwareUpdates"
+                                }
+                            }
+            ]
+        },
+        "enforcedSoftwareUpdateMajorOSDeferredInstallDelay": {
+            "title": "Major OS UpdateDeferral length (in days)",
+            "description": "Supervised only. macOS 11.3 and later. This restriction allows the admin to set how many days to delay a major software update on the device. When this restriction is in place the user sees a software update only after the specified delay after the release of the software update. This value controls the delay for forceDelayedMajorSoftwareUpdates.",
+            "propertyOrder": 70,
+            "anyOf": [
+                            {
+                                "title": "Not Configured",
+                                "type": "null"
+                            },
+                            {
+                                "title": "Configured",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 90,
+                                "default": 30,
+                                "options": {
+                                    "infoText": "Key: enforcedSoftwareUpdateMajorOSDeferredInstallDelay"
+                                }
+                            }
+            ]
         }
     }
 }
