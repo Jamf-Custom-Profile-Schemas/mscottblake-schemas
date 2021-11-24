@@ -1,6 +1,6 @@
 {
     "title": "com.apple.applicationaccess",
-    "description": "Preference Domain: com.apple.applicationaccess,  Application: macOS Resrictions",
+    "description": "Preference Domain: com.apple.applicationaccess,  Application: macOS Restrictions",
     "__version": "10.15",
     "__feedback": "mitchelsblake@gmail.com",
     "type": "object",
